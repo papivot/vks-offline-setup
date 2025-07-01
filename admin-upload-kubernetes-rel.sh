@@ -36,16 +36,16 @@ govc library.create Local
 for files in $(ls $DOWNLOAD_VKR_OVA/*.tar.gz); do
     echo
     echo "Extracting the OVA files from the tarball: $files"
-#    tar -xzvf $files
+    tar -xzvf $files
     echo
     echo "Uploading the OVA files to the Content Library: Local"
     for ovffile in $(ls ${files%.tar.gz}/*.*); do
         echo "Uploading the OVF file: $ovffile"
-#        govc library.import -n ${ovffile%.ovf} -m=true Local $ovffile
+        govc library.import -n ${ovffile%.ovf} -m=true Local $ovffile
     done
     echo
     echo "Cleaning up..."
-#    [ -d "${files%.tar.gz}" ] && rm -rf "${files%.tar.gz}"
+    [ -d "${files%.tar.gz}" ] && rm -rf "${files%.tar.gz}"
 done
 
 #echo "     tar -xzvf ${tkgrimage}.tar.gz"
